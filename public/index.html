@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="css/styles.css" />
-		<title>Document</title>
-	</head>
-	<body>
-		<script src="js/script.js"></script>
-	</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>AI Teacher Helper</title>
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <h1>AI Teacher Helper</h1>
+            <form id="lessonForm">
+                <label for="topic">Teaching Topic:</label>
+                <input type="text" id="topic" name="topic" required />
+                <button type="submit">Generate Lesson Plan</button>
+            </form>
+            <div id="lessonPlan">
+                <h2>Generated Lesson Plan</h2>
+                <pre id="output"></pre>
+            </div>
+        </div>
+        <script src="js/script.js"></script>
+    </body>
 </html>
