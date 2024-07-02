@@ -5,7 +5,6 @@
      This is the landing page of the AI Teacher Helper. The user will input their coursework topic and
      expect an LLM response containing the lesson plan.-->
 
-<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -16,7 +15,7 @@
     <body>
         <div class="container">
             <h1>AI Teacher Helper</h1>
-            <form id="lessonForm">
+            <form id="lessonForm" method="post">
                 <label for="topic">Teaching Topic:</label>
                 <input type="text" id="topic" name="topic" required />
                 <button type="submit">Generate Lesson Plan</button>
