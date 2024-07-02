@@ -5,16 +5,15 @@ async function generateLessonPlan(event) {
 
     const topic = document.getElementById("topic").value;
 
+    console.log("script:", topic);
     const response = await fetch("/generateLessonPlan", {
         method: "POST",
         headers: {
             "Content-Type": "application/json;",
         },
-        body: JSON.stringify({ topic: topic }),
+        body: JSON.stringify(topic),
     });
 
-    // const data = await response.json();
-    // document.getElementById("output").textContent = data.choices[0].message.content;
     const data = await response.json();
-    document.getElementById("output").textContent = data.resp;
+    document.getElementById("output").textContent = data.choices[0].message.content;
 }
