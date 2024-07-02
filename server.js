@@ -18,10 +18,10 @@ const port = process.env.PORT || 8080;
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
-async function callAPI(req, res) {
-    let topic = req.body;
+async function callAPI(request, response) {
+    const { topic } = request;
 
-    let prompt = `Create a lesson plan for the topic "${topic.body}" with the following subheadings: Learning Objectives, Materials Needed, Lesson Procedure, Assessment, Differentiation. The topics must strictly contain the above headings to standardize output.`;
+    // let prompt = `Create a lesson plan for the topic "${topic.body}" with the following subheadings: Learning Objectives, Materials Needed, Lesson Procedure, Assessment, Differentiation. The topics must strictly contain the above headings to standardize output.`;
 
     try {
         // const apiResponse = await openai.chat.completions.create({
@@ -30,10 +30,11 @@ async function callAPI(req, res) {
         //     temperature: 0,
         //     max_tokens: 500,
         // });
-        console.log(topic.body);
-        res.status(200).json({ response: apiResponse });
+        //let apiResponse = topic.body;
+        console.log("server:", JSON.parse(topic));
+        response.status(200).json({ resp: topic });
     } catch (err) {
-        res.status(500).json(err.message);
+        response.status(500).json(err.message);
     }
 }
 
