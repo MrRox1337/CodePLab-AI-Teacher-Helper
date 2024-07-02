@@ -10,7 +10,7 @@ async function generateLessonPlan(event) {
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ topic }),
+        body: topic,
     };
 
     const response = await fetch("/generateLessonPlan", request);

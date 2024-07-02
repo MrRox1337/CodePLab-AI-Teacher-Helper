@@ -2,7 +2,7 @@
 // The user will input the course topic information and will receive a generated output containing
 // Learning Objectives, Materials Needed, Lesson Procedure, Assessment, and Differentiation.
 
-import express from "express";
+import express, { response } from "express";
 import bodyParser from "body-parser";
 import OpenAI from "openai";
 import dotenv from "dotenv";
@@ -19,38 +19,19 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 
 async function callAPI(req, res) {
-    const { topic } = req.body;
+    let topic = req.body;
 
-    const prompt = `Create a lesson plan for the topic "${topic}" with the following subheadings:
-    - Learning Objectives
-    - Materials Needed
-    - Lesson Procedure
-    - Assessment
-    - Differentiation
-    `;
-
-    // const apiKey = process.env.CHATGPT_API_KEY;
-    // console.log(apiKey);
-    // const response = await fetch("https://api.openai.com/v1/engines/davinci-codex/completions", {
-    //     method: "POST",
-    //     headers: {
-    //         "Content-Type": "application/json",
-    //         Authorization: `Bearer ${apiKey}`,
-    //     },
-    //     body: JSON.stringify({
-    //         prompt: prompt,
-    //         max_tokens: 500,
-    //     }),
-    // });
+    let prompt = `Create a lesson plan for the topic "${topic.body}" with the following subheadings: Learning Objectives, Materials Needed, Lesson Procedure, Assessment, Differentiation. The topics must strictly contain the above headings to standardize output.`;
 
     try {
-        const response = await openai.chat.completions.create({
-            model: "gpt-3.5-turbo",
-            messages: [{ role: "user", content: prompt }],
-            temperature: 0,
-            max_tokens: 1000,
-        });
-        res.status(200).json(response);
+        // const apiResponse = await openai.chat.completions.create({
+        //     model: "gpt-3.5-turbo",
+        //     messages: [{ role: "user", content: prompt }],
+        //     temperature: 0,
+        //     max_tokens: 500,
+        // });
+        console.log(topic.body);
+        res.status(200).json({ response: apiResponse });
     } catch (err) {
         res.status(500).json(err.message);
     }
