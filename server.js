@@ -17,6 +17,8 @@
 // Step 3: Run the following code to run the application
 // node server.js
 //
+// Step 4: Go to http://localhost:8080/
+//
 //-------------- Code Begins -----------------//
 
 // Imports and initialization
